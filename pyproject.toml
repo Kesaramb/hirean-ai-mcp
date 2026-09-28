@@ -1,0 +1,30 @@
+[project]
+name = "hirean-ai-mcp"
+version = "0.2.0"
+description = "HireAn AI MCP — build editable CapCut / Jianying video projects with VectCutAPI"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=2.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+hirean-ai-mcp = "hirean_ai_mcp.server:main"
+capcut-mcp = "hirean_ai_mcp.server:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://hirean.ai"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hirean_ai_mcp", "src/capcut_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
